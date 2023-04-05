@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a22f125af44465e9cfd89ee1ca28e07, type: 3}
+  m_Name: Cell
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 4073701617192203079, guid: a17b62cb5f2c6d641ba909b30c61fddd, type: 3}
+  _platform: {fileID: 4912424348922678926, guid: d9ddb52c0a6682d41ae368fd5c6eb75d,
+    type: 3}
+  _wall: {fileID: 2635671042078775729, guid: 77b14970ae40c124c863b6e57880b364, type: 3}
+  _grid:
+  - Row:
+    - TypeCell: 2
+    - TypeCell: 0
+    - TypeCell: 1
+    - TypeCell: 0
+    - TypeCell: 1
+  - Row:
+    - TypeCell: 2
+    - TypeCell: 2
+    - TypeCell: 1
+    - TypeCell: 1
+  - Row:
+    - TypeCell: 0
+    - TypeCell: 2
+    - TypeCell: 2
+    - TypeCell: 1
+  - Row:
+    - TypeCell: 1
+    - TypeCell: 2
+    - TypeCell: 0
+    - TypeCell: 0
+  - Row:
+    - TypeCell: 1
+    - TypeCell: 2
+    - TypeCell: 1
+    - TypeCell: 0
