@@ -6,8 +6,6 @@ namespace Game.ECS
     {
         private readonly List<ISingleMono> _monos = new List<ISingleMono>();
 
-        public SingleSystems(){}
-
         public void Add(ISingleMono mono)
         {
             _monos.Add(mono);

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.ECS
 {
-    public class PlayerManager : RunMono, ISingleMono
+    public class PlayerManager : ManagerMono
     {
         private readonly GlobalData _data;
         
@@ -19,7 +19,7 @@ namespace Game.ECS
             _data = data;
         }
         
-        public void Start()
+        public override void Start()
         {
             Init();
             
@@ -75,7 +75,7 @@ namespace Game.ECS
             _fixedRunSystems.Continue();
         }
         
-        public void Destroy()
+        public override void Destroy()
         {
             _runSystems.Destroy();
             _fixedRunSystems.Destroy();

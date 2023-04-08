@@ -21,9 +21,10 @@ namespace Game.Player.Systems
         {
             _action.PlayerMap.Enable();
             _action.PlayerMap.Move.performed += context => _direction = context.ReadValue<Vector2>();
+            _action.PlayerMap.Move.canceled += _ => _direction = Vector2.zero;
             _action.PlayerMap.Jump.started += context => OnJump?.Invoke(_direction);
         }
-
+        
         public void Destroy() { }
     }
 }

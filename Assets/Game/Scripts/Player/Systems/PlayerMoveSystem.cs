@@ -1,4 +1,5 @@
-﻿using Game.ECS;
+﻿using System.Threading.Tasks;
+using Game.ECS;
 using Game.Player.Components;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Game.Player.Systems
     public class PlayerMoveSystem : RunMono
     {
         private readonly PlayerMoveComponent _comp;
+        public bool CanMove { get; private set; }
 
         public PlayerMoveSystem(PlayerMoveComponent component)
         {
@@ -14,24 +16,20 @@ namespace Game.Player.Systems
             _comp.Transform.gameObject.SetActive(true);
         }
 
-        public void Start(Vector2 pos)
+        public async void MoveTo(Vector2 pos)
         {
-            _comp.Transform.position = new Vector3(pos.x * 20, _comp.Transform.position.y, pos.y * 20);
-        }
-        
-        public override void FixedUpdate()
-        {
-            
-        }
-
-        public override void Stop()
-        {
-            
-        }
-
-        public override void Continue()
-        {
-            
+            CanMove = false;
+            var targetPos = new Vector3(pos.x * 20, _comp.Transform.position.y, pos.y * 20);
+            while (_comp.Transform.position != targetPos)
+            {
+                _comp.Transform.position = Vector3.MoveTowards(
+                    _comp.Transform.position, 
+                    targetPos,
+                    _comp.Data.Speed * Time.deltaTime);
+                await Task.Yield();
+            }
+ 
+            CanMove = true;
         }
     }
 }

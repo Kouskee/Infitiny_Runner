@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 5380457462717905240, guid: 80cb0c45c9605704ca51da9d9f8f4e90,
     type: 3}
-  _speed: 7
+  _speed: 65.5
   _resistance: 2
   _speedRotate: 2
   _speedStopping: 10

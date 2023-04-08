@@ -9,18 +9,14 @@ namespace Game.ECS
     {
         [SerializeField] private GlobalData _data;
 
-        private RunSystems _runs;
-        private RunSystems _fixedRuns;
-        private SingleSystems _singles;
+        private ManagerSystems _managers;
         private TaskSingleSystems _taskSingles;
 
         private CancellationTokenSource _token;
 
         private void Awake()
         {
-            _runs = new RunSystems();
-            _fixedRuns = new RunSystems();
-            _singles = new SingleSystems();
+            _managers = new ManagerSystems();
             _taskSingles = new TaskSingleSystems();
 
             _token = new CancellationTokenSource();
@@ -35,9 +31,7 @@ namespace Game.ECS
             if (_token.IsCancellationRequested) return;
 
             var playerManager = new PlayerManager(_data);
-            _runs.Add(playerManager);
-            _fixedRuns.Add(playerManager);
-            _singles.Add(playerManager);
+            _managers.Add(playerManager);
 
             StartSystems();
         }
@@ -49,23 +43,22 @@ namespace Game.ECS
 
         private void StartSystems()
         {
-            _singles.Start();
+            _managers.Start();
         }
 
         private void Update()
         {
-            _runs.Run();
+            _managers.Run();
         }
 
         private void FixedUpdate()
         {
-            _fixedRuns.Run();
+            _managers.FixedRun();
         }
 
         private void OnDestroy()
         {
-            _runs.Destroy();
-            _singles.Destroy();
+            _managers.Destroy();
         }
 
         private void OnApplicationQuit()

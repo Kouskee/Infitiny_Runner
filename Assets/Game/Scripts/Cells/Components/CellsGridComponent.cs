@@ -16,22 +16,9 @@ namespace Game.Platforms
             Grid = new Cell[0][];
         }
         
-        public Cell GetCell(int x, int y, int xNext)
+        public Cell GetCell(int y, int x)
         {
-            var cell = new Cell();
-            
-            for (int i = x; i <= xNext; i++)
-            {
-                if (Contains(i, y))
-                {
-                    if (Grid[i][y].TypeCell == TypeCell.Wall) return Grid[i][y];
-                    cell = Grid[i][y];
-                }
-                else
-                    cell = new Cell { TypeCell = TypeCell.Null };
-            }
-
-            return cell;
+            return Contains(x, y) ? Grid[x][y] : new Cell {TypeCell = TypeCell.Null};
         }
         
         private bool Contains(int x, int y)
